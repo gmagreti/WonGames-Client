@@ -18,13 +18,15 @@ export default {
       medium: '1.6rem',
       large: '1.8rem',
       xlarge: '2.0rem',
-      xxlarge: '2.8rem'
+      xxlarge: '2.8rem',
+      huge: '5.2rem'
     }
   },
   colors: {
     primary: '#F231A5',
     secondary: '#3CD3C1',
     mainBg: '#06092B',
+    lightBg: '#F2F2F2',
     white: '#FAFAFA',
     black: '#030517',
     lightGray: '#EAEAEA',
@@ -46,5 +48,9 @@ export default {
     overlay: 30,
     modal: 40,
     alwaysOnTop: 50
+  },
+  transition: {
+    default: '0.3s ease-in-out',
+    fast: '0.1s ease-in-out'
   }
-}
+} as const
