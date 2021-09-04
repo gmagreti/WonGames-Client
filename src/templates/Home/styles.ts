@@ -5,9 +5,10 @@ import * as HighlightStyles from 'components/Highlight/styles'
 
 export const SectionBanner = styled.section`
   ${({ theme }) => css`
-    margin: ${theme.spacings.large} calc(-${theme.grid.gutter} / 2);
+    margin: 0 calc(-${theme.grid.gutter} / 2) ${theme.spacings.large};
+
     ${media.greaterThan('medium')`
-      margin: ${theme.spacings.large} 0;
+      margin-bottom: ${theme.spacings.large};
       position: relative;
       z-index: ${theme.layers.base};
     `}
@@ -20,6 +21,7 @@ export const SectionNews = styled.div`
     ${media.greaterThan('large')`
       margin-top: -13rem;
     `}
+
     ${media.greaterThan('medium')`
       margin-bottom: 0;
       padding-top: 14rem;
@@ -32,7 +34,6 @@ export const SectionNews = styled.div`
     `}
   `}
 `
-
 export const SectionUpcoming = styled.div`
   ${({ theme }) => css`
     ${HighlightStyles.Wrapper} {
