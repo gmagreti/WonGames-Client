@@ -1,5 +1,7 @@
 import { Container } from 'components/Container'
+import { Divider } from 'components/Divider'
 import GameCard, { GameCardProps } from 'components/GameCard'
+import { Grid } from 'components/Grid'
 import Heading from 'components/Heading'
 import { HighlightProps } from 'components/Highlight'
 import Showcase from 'components/Showcase'
@@ -25,9 +27,13 @@ const Whishlist = ({
           Wishlist
         </Heading>
 
-        {games?.map((game, index) => (
-          <GameCard key={`wishlist-${index}`} {...game} />
-        ))}
+        <Grid>
+          {games?.map((game, index) => (
+            <GameCard key={`wishlist-${index}`} {...game} />
+          ))}
+        </Grid>
+
+        <Divider />
       </Container>
 
       <Showcase
