@@ -2991,6 +2991,14 @@
     "@babel/runtime" "^7.14.8"
     "@styled-icons/styled-icon" "^10.6.3"
 
+"@styled-icons/boxicons-solid@^10.38.0":
+  version "10.38.0"
+  resolved "https://registry.yarnpkg.com/@styled-icons/boxicons-solid/-/boxicons-solid-10.38.0.tgz#bb2a6e21f3412c97ae8029396e3ca9fb107c7658"
+  integrity sha512-uuMtF1R61smQT5r6HIYMHvpVD0XSErXXNQYl5d6lCtMyefd0gIE5Rw+iD9i/RxHFUHNHbvL69LvitCLtNWrSqw==
+  dependencies:
+    "@babel/runtime" "^7.15.3"
+    "@styled-icons/styled-icon" "^10.6.3"
+
 "@styled-icons/crypto@10.34.0":
   version "10.34.0"
   resolved "https://registry.yarnpkg.com/@styled-icons/crypto/-/crypto-10.34.0.tgz#fd78ae05e536c9f7bf71ca107ba0cc63fdf50a75"
@@ -3614,19 +3622,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
-  version "17.0.3"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.3.tgz#ba6e215368501ac3826951eef2904574c262cc79"
-  integrity sha512-wYOUxIgs2HZZ0ACNiIayItyluADNbONl7kt8lkLjVK8IitMH5QMyAh75Fwhmo37r1m7L2JaFj03sIfxBVDvRAg==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^17.0.14":
-  version "17.0.14"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.14.tgz#f0629761ca02945c4e8fea99b8177f4c5c61fb0f"
-  integrity sha512-0WwKHUbWuQWOce61UexYuWTGuGY/8JvtUe/dtQ6lR4sZ3UiylHotJeWpf3ArP9+DSGUoLY3wbU59VyMrJps5VQ==
+"@types/react@*", "@types/react@^17.0.20":
+  version "17.0.20"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.20.tgz#a4284b184d47975c71658cd69e759b6bd37c3b8c"
+  integrity sha512-wWZrPlihslrPpcKyCSlmIlruakxr57/buQN1RjlIeaaTWDLtJkTtRW429MoQJergvVKc4IWBpRhWw7YNh/7GVA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
