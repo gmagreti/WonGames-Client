@@ -31,7 +31,8 @@ export default {
     black: '#030517',
     lightGray: '#EAEAEA',
     gray: '#8F8F8F',
-    darkGray: '#2E2F42'
+    darkGray: '#2E2F42',
+    red: '#FF6347'
   },
   spacings: {
     xxsmall: '0.8rem',
@@ -40,8 +41,7 @@ export default {
     medium: '3.2rem',
     large: '4.0rem',
     xlarge: '4.8rem',
-    xxlarge: '5.6rem',
-    huge: '5.2rem'
+    xxlarge: '5.6rem'
   },
   layers: {
     base: 10,
