@@ -1,12 +1,16 @@
+import Link from 'next/link'
+import Button from 'components/Button'
 import Heading from 'components/Heading'
 import { PaymentCard } from 'components/PaymentOptions'
 import * as S from './styles'
 
 export type CardsListProps = {
   cards?: PaymentCard[]
+  total: string
+  hasButton?: boolean
 }
 
-const CardsList = ({ cards }: CardsListProps) => (
+const CartList = ({ items, total, hasButton = false }: CartListProps) => (
   <>
     <Heading lineBottom color="black" size="small">
       My cards
