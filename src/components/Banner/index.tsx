@@ -34,7 +34,7 @@ const Banner = ({
     )}
 
     <S.ImageWrapper>
-      <img src={img} alt={title} layout="fill" objectFit="cover" />
+      <Image src={img} alt={title} layout="fill" objectFit="cover" />
     </S.ImageWrapper>
 
     <S.Caption>
