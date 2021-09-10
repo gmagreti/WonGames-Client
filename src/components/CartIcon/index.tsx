@@ -1,16 +1,21 @@
-import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
-
+import { useState } from 'react'
 import * as S from './styles'
 
-export type CartIconProps = {
-  quantity?: number
+export type DropdownProps = {
+  title: React.ReactNode
+  children: React.ReactNode
 }
 
-const CartIcon = ({ quantity = 0 }: CartIconProps) => (
-  <S.Wrapper>
-    {quantity > 0 && <S.Badge aria-label="Cart Items">{quantity}</S.Badge>}
-    <ShoppingCart aria-label="Shopping Cart" />
-  </S.Wrapper>
-)
+const Dropdown = ({ title, children }: DropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false)
 
-export default CartIcon
+  return (
+    <S.Wrapper isOpen={isOpen}>
+      <S.Title onClick={() => setIsOpen(!isOpen)}>{title}</S.Title>
+
+      <S.Content aria-hidden={!isOpen}>{children}</S.Content>
+    </S.Wrapper>
+  )
+}
+
+export default Dropdown
