@@ -1,9 +1,9 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
-import Dropdown, { DropdownProps } from '.'
+import CartIcon from '.'
 
 export default {
-  title: 'Dropdown',
-  component: Dropdown,
+  title: 'CartIcon',
+  component: CartIcon,
   parameters: {
     backgrounds: {
       default: 'won-dark'
@@ -11,9 +11,9 @@ export default {
   }
 } as Meta
 
-export const Default: Story<DropdownProps> = (args) => <Dropdown {...args} />
+export const Default: Story = () => <CartIcon />
+export const withItems: Story = (args) => <CartIcon {...args} />
 
-Default.args = {
-  title: 'Click here',
-  children: 'content'
+withItems.args = {
+  quantity: 3
 }

@@ -1,62 +1,35 @@
 import styled, { css } from 'styled-components'
+import { darken } from 'polished'
 
-export const Title = styled.div`
+export const Wrapper = styled.button`
   ${({ theme }) => css`
-    cursor: pointer;
     color: ${theme.colors.white};
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 2.4rem;
+    height: 2.4rem;
     position: relative;
+    transition: color ${theme.transition.default};
+    &:hover {
+      color: ${darken(0.3, theme.colors.white)};
+    }
+  `}
+`
+
+export const Badge = styled.span`
+  ${({ theme }) => css`
     display: flex;
     align-items: center;
-    padding-right: 2.4rem;
-  `}
-`
-
-export const Content = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    flex-direction: column;
-    background: ${theme.colors.white};
-    color: ${theme.colors.black};
-    margin-top: ${theme.spacings.small};
+    justify-content: center;
+    background: ${theme.colors.secondary};
+    color: ${theme.colors.white};
+    font-size: 1rem;
+    border-radius: 50%;
+    width: 1.6rem;
+    height: 1.6rem;
     position: absolute;
-    right: 0;
-    &::before {
-      content: '';
-      position: absolute;
-      border-right: 1.2rem solid transparent;
-      border-left: 1.2rem solid transparent;
-      border-bottom: 1.2rem solid ${theme.colors.white};
-      top: -1.2rem;
-      right: 2.4rem;
-    }
-  `}
-`
-
-type WrapperProps = {
-  isOpen?: boolean
-}
-
-const wrapperModifiers = {
-  open: () => css`
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  `,
-  close: () => css`
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-2rem);
-  `
-}
-
-export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, isOpen }) => css`
-    position: relative;
-    width: max-content;
-    ${Content} {
-      transition: transform 0.2s ease-in, opacity ${theme.transition.default};
-      ${isOpen && wrapperModifiers.open()}
-      ${!isOpen && wrapperModifiers.close()}
-    }
+    top: -0.4rem;
+    right: -0.4rem;
   `}
 `
