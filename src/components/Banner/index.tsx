@@ -5,8 +5,6 @@ import Button from 'components/Button'
 
 import * as S from './styles'
 
-import bannerImg from '../../../public/img/'
-
 export type BannerProps = {
   img: string
   title: string
@@ -36,7 +34,7 @@ const Banner = ({
     )}
 
     <S.ImageWrapper>
-      <img src={img} alt={title} layout="fill" objectFit="cover" />
+      <Image src={img} alt={title} layout="fill" objectFit="cover" />
     </S.ImageWrapper>
 
     <S.Caption>

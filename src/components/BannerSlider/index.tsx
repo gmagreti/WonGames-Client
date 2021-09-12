@@ -1,5 +1,4 @@
 import Banner, { BannerProps } from 'components/Banner'
-import BannerFenixx from 'components/BannerFenixx'
 import Slider, { SliderSettings } from 'components/Slider'
 
 import items from './mock'
@@ -12,7 +11,7 @@ export type BannerSliderProps = {
 
 const settings: SliderSettings = {
   dots: true,
-  arrows: true,
+  arrows: false,
   vertical: false,
   verticalSwiping: false,
   infinite: false,
@@ -31,7 +30,7 @@ const BannerSlider = ({ items }: BannerSliderProps) => (
   <S.Wrapper>
     <Slider settings={settings}>
       {items.map((item) => (
-        <BannerFenixx key={item.title} {...item} />
+        <Banner key={item.title} {...item} />
       ))}
     </Slider>
   </S.Wrapper>
