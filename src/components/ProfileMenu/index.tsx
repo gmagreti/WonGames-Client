@@ -1,11 +1,6 @@
 import Link from 'next/link'
 
-import {
-  CreditCard,
-  AccountCircle,
-  FormatListBulleted,
-  ExitToApp
-} from '@styled-icons/material-outlined'
+import { CreditCard } from '@styled-icons/material-outlined'
 
 import * as S from './styles'
 
