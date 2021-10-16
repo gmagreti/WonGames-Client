@@ -1,10 +1,8 @@
 import Home, { HomeTemplateProps } from 'templates/Home'
-import bannersMock from 'components/BannerSlider/mock'
+import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mappers'
 import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
-
 import { initializeApollo } from 'utils/apollo'
-import { QueryHome } from 'graphql/generated/QueryHome'
+import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome'
 import { QUERY_HOME } from 'graphql/queries/home'
 
 export default function Index(props: HomeTemplateProps) {
@@ -13,40 +11,34 @@ export default function Index(props: HomeTemplateProps) {
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
-
+  const TODAY = new Date().toISOString().slice(0, 10)
   const {
-    data: { banners, newGames }
-  } = await apolloClient.query<QueryHome>({ query: QUERY_HOME })
+    data: { banners, newGames, upcomingGames, freeGames, sections }
+  } = await apolloClient.query<QueryHome, QueryHomeVariables>({
+    query: QUERY_HOME,
+    variables: { date: '2021-06-21' }
+  })
+
+  console.log(upcomingGames)
 
   return {
     props: {
       revalidate: 10,
-      banners: banners.map((banner) => ({
-        img: banner.image?.url,
-        title: banner.title,
-        subtitle: banner.subtitle,
-        buttonLabel: banner.button?.label,
-        buttonLink: banner.button?.link,
-        ...(banner.ribbon && {
-          ribbon: banner.ribbon.text,
-          ribbonColor: banner.ribbon.color,
-          ribbonSize: banner.ribbon.size
-        })
-      })),
-      newGames: newGames.map((game) => ({
+      banners: bannerMapper(banners),
+      newGames: gamesMapper(newGames),
+      mostPopularHighlight: highlightMapper(sections?.popularGames?.highlight),
+      mostPopularGames: gamesMapper(sections!.popularGames!.games),
+      upcommingGames: upcomingGames.map((game) => ({
         title: game.name,
         slug: game.slug,
         developer: game.developers[0].name,
         img: game.cover?.url,
         price: game.price
       })),
-      mostPopularHighlight: highlightMock,
-      mostPopularGames: gamesMock,
-      upcommingGames: gamesMock,
-      upcommingHighligth: highlightMock,
-      upcommingMoreGames: gamesMock,
-      freeGames: gamesMock,
-      freeHighligth: highlightMock
+      upcommingHighligth: highlightMapper(sections?.upcomingGames?.highlight),
+      upcommingMoreGames: gamesMapper(upcomingGames),
+      freeGames: gamesMapper(freeGames),
+      freeHighlight: highlightMapper(sections?.freeGames?.highlight)
     }
   }
 }
