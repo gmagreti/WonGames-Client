@@ -6,13 +6,21 @@ import GameCard, { GameCardProps } from 'components/GameCard'
 import { Grid } from 'components/Grid'
 
 import * as S from './styles'
+import { useQuery } from '@apollo/client'
+import { QUERY_GAMES } from 'graphql/queries/games'
+import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 
 export type GamesTemplateProps = {
   games?: GameCardProps[]
   filterItems: ItemProps[]
 }
 
-const GamesTemplate = ({ filterItems, games = [] }: GamesTemplateProps) => {
+const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
+  const { data, loading } = useQuery<QueryGames, QueryGamesVariables>(
+    QUERY_GAMES,
+    { variables: { limit: 14 } }
+  )
+
   const handleFilter = () => {
     return
   }
@@ -28,8 +36,15 @@ const GamesTemplate = ({ filterItems, games = [] }: GamesTemplateProps) => {
 
         <section>
           <Grid>
-            {games.map((item) => (
-              <GameCard key={item.title} {...item} />
+            {data?.games.map((game) => (
+              <GameCard
+                key={game.slug}
+                title={game.name}
+                slug={game.slug}
+                developer={game.developers[0].name}
+                img={game.cover!.url}
+                price={game.price}
+              />
             ))}
           </Grid>
 
