@@ -1,6 +1,6 @@
 import Home, { HomeTemplateProps } from 'templates/Home'
 import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mappers'
-import gamesMock from 'components/GameCardSlider/mock'
+// import gamesMock from 'components/GameCardSlider/mock'
 import { initializeApollo } from 'utils/apollo'
 import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome'
 import { QUERY_HOME } from 'graphql/queries/home'
@@ -11,7 +11,7 @@ export default function Index(props: HomeTemplateProps) {
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
-  const TODAY = new Date().toISOString().slice(0, 10)
+  // const TODAY = new Date().toISOString().slice(0, 10)
   const {
     data: { banners, newGames, upcomingGames, freeGames, sections }
   } = await apolloClient.query<QueryHome, QueryHomeVariables>({
