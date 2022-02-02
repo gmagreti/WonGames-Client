@@ -6,7 +6,9 @@ describe('<CartIcon />', () => {
   it('should render the heading', () => {
     const { container } = render(<CartIcon />)
 
-    expect(screen.getByRole('heading', { name: /CartIcon/i })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /CartIcon/i })
+    ).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
   })
