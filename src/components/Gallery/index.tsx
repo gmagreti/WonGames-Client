@@ -63,6 +63,8 @@ export type GalleryProps = {
   items: GalleryImageProps[]
 }
 
+import GalleryMock from './mock'
+
 const Gallery = ({ items }: GalleryProps) => {
   const slider = useRef<SlickSLider>(null)
   const [isOpen, setIsOpen] = useState(false)
