@@ -21,6 +21,7 @@ export const QUERY_UPCOMING = gql`
       }
     }
   }
+
   ${GameFragment}
   ${HighlightFragment}
 `

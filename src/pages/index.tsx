@@ -19,7 +19,10 @@ export async function getStaticProps() {
     variables: { date: '2021-06-21' }
   })
 
-  console.log(upcomingGames)
+  const { data } = await apolloClient.query<QueryHome, QueryHomeVariables>({
+    query: QUERY_HOME,
+    variables: { date: '2021-06-21' }
+  })
 
   return {
     props: {
@@ -28,15 +31,8 @@ export async function getStaticProps() {
       newGames: gamesMapper(newGames),
       mostPopularHighlight: highlightMapper(sections?.popularGames?.highlight),
       mostPopularGames: gamesMapper(sections!.popularGames!.games),
-      upcommingGames: upcomingGames.map((game) => ({
-        title: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: game.cover?.url,
-        price: game.price
-      })),
       upcommingHighligth: highlightMapper(sections?.upcomingGames?.highlight),
-      upcommingMoreGames: gamesMapper(upcomingGames),
+      upcomingGames: gamesMapper(upcomingGames),
       freeGames: gamesMapper(freeGames),
       freeHighlight: highlightMapper(sections?.freeGames?.highlight)
     }

@@ -1,12 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {
-  AddShoppingCart,
-  FavoriteBorder,
-  Favorite
-} from '@styled-icons/material-outlined'
+import { FavoriteBorder, Favorite } from '@styled-icons/material-outlined'
 import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
-import Button from 'components/Button'
 import * as S from './styles'
 import formatPrice from 'utils/format-price'
 import CartButton from 'components/CartButton'

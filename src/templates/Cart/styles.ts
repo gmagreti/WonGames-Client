@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Wrapper = styled.div``
-
 export const Content = styled.div`
   ${({ theme }) => css`
     display: grid;
@@ -12,5 +10,18 @@ export const Content = styled.div`
     ${media.greaterThan('medium')`
       grid-template-columns: 2fr 1fr;
     `}
+  `}
+`
+
+export const Text = styled.p`
+  ${({ theme }) => css`
+    color: ${theme.colors.gray};
+    a {
+      color: ${theme.colors.primary};
+      text-decoration: none;
+    }
+    svg {
+      color: ${theme.colors.primary};
+    }
   `}
 `

@@ -56,7 +56,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     query: QUERY_GAME_BY_SLUG,
     variables: { slug: `${params?.slug}` }
   })
-
   if (!data.games.length) {
     return { notFound: true }
   }
@@ -82,6 +81,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       revalidate: 60,
       cover: game.cover!.src,
       gameInfo: {
+        id: game.id,
         title: game.name,
         price: game.price,
         description: game.short_description
