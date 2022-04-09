@@ -7,6 +7,7 @@ import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 import { useApollo } from 'utils/apollo'
 import { CartProvider } from 'hooks/use-cart'
+import NextNProgress from 'nextjs-progressbar'
 
 function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initializeApoloState)
@@ -27,6 +28,13 @@ function App({ Component, pageProps }: AppProps) {
             />
           </Head>
           <GlobalStyles />
+          <NextNProgress
+            color="#F231A5"
+            startPosition={0.3}
+            stopDelayMs={200}
+            height={3}
+            showOnShallow={true}
+          />
           <Component {...pageProps} />
         </CartProvider>
       </ThemeProvider>
