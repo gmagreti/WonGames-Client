@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import Button from 'components/Button'
+/* eslint-disable @next/next/no-img-element */
 import Heading from 'components/Heading'
 import { PaymentCard } from 'components/PaymentOptions'
 import * as S from './styles'
@@ -10,7 +9,7 @@ export type CardsListProps = {
   hasButton?: boolean
 }
 
-const CartList = ({ items, total, hasButton = false }: CartListProps) => (
+const CardsList = ({ cards, total, hasButton = false }: CardsListProps) => (
   <>
     <Heading lineBottom color="black" size="small">
       My cards
