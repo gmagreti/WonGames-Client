@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react'
 import Link from 'next/link'
 import { useMutation } from '@apollo/client'
+import { signIn } from 'next-auth/client'
 
 import { AccountCircle, Email, Lock } from '@styled-icons/material-outlined'
 
@@ -13,15 +14,23 @@ import { UsersPermissionsRegisterInput } from 'graphql/generated/globalTypes'
 import { MUTATION_REGISTER } from 'graphql/mutations/register'
 
 const FormSignUp = () => {
-  const [loading, setLoading] = useState(false)
-
   const [values, setValues] = useState<UsersPermissionsRegisterInput>({
     username: '',
     email: '',
     password: ''
   })
 
-  const [createUser] = useMutation(MUTATION_REGISTER)
+  const [createUser, { error, loading }] = useMutation(MUTATION_REGISTER, {
+    onError: (error) => console.error({ error }),
+    onCompleted: () => {
+      !error &&
+        signIn('credentials', {
+          email: values.email,
+          password: values.password,
+          callbackUrl: '/'
+        })
+    }
+  })
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -29,8 +38,6 @@ const FormSignUp = () => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    setLoading(true)
-    console.log(values)
 
     createUser({
       variables: {
@@ -41,7 +48,6 @@ const FormSignUp = () => {
         }
       }
     })
-    setLoading(false)
   }
 
   return (
