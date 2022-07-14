@@ -1,17 +1,20 @@
+import { useState, FormEvent } from 'react'
 import Link from 'next/link'
+import { useMutation } from '@apollo/client'
 
 import { AccountCircle, Email, Lock } from '@styled-icons/material-outlined'
 
 import Button from 'components/Button'
 import TextField from 'components/TextField'
+import { FormWrapper, FormLink, FormLoading } from 'components/Form'
 
-import { FormWrapper, FormLink } from 'components/Form'
 import { UsersPermissionsRegisterInput } from 'graphql/generated/globalTypes'
-import { useState, FormEvent } from 'react'
-import { useMutation } from '@apollo/client'
+
 import { MUTATION_REGISTER } from 'graphql/mutations/register'
 
 const FormSignUp = () => {
+  const [loading, setLoading] = useState(false)
+
   const [values, setValues] = useState<UsersPermissionsRegisterInput>({
     username: '',
     email: '',
@@ -26,7 +29,7 @@ const FormSignUp = () => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-
+    setLoading(true)
     console.log(values)
 
     createUser({
@@ -38,6 +41,7 @@ const FormSignUp = () => {
         }
       }
     })
+    setLoading(false)
   }
 
   return (
@@ -73,7 +77,7 @@ const FormSignUp = () => {
         />
 
         <Button type="submit" size="large" fullWidth>
-          Sign up now
+          {loading ? <FormLoading /> : <span>Sign up now</span>}
         </Button>
 
         <FormLink>
