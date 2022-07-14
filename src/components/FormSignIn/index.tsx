@@ -35,8 +35,6 @@ const FormSignIn = () => {
     }
 
     setLoading(false)
-
-    console.error('email ou senha inválida')
   }
 
   return (
