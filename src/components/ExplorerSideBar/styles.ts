@@ -23,6 +23,9 @@ export const Content = styled.div`
     margin-top: 5.6rem;
     margin-bottom: 2rem;
     transition: transform ${theme.transition.default};
+
+    position: sticky;
+    top: 20px;
     ${media.greaterThan('medium')`
       overflow-y: initial;
       padding: 0;
